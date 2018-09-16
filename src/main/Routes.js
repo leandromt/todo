@@ -10,11 +10,13 @@ export default props => (
   <BrowserRouter>
     <div>
       <Menu />
-      <Switch>
-        <Route path="/" component={Todo} exact />
-        <Route path="/about" component={About} />
-        <Route component={Erro404} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route path="/" component={Todo} exact />
+          <Route path="/about" component={About} />
+          <Route component={Erro404} />
+        </Switch>
+      </div>
     </div>
   </BrowserRouter>
 );
