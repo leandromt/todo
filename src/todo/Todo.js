@@ -1,10 +1,14 @@
-// Libs
+// Dependencies
 import React, { Component } from "react";
+import axios from "axios";
 
 // Components
 import PageHeader from "../template/PageHeader";
 import TodoForm from "../todo/TodoForm";
 import TodoList from "../todo/TodoList";
+
+// Constantes
+const URL = "http://localhost:3003/api/todos";
 
 class Todo extends Component {
   constructor(props) {
@@ -19,6 +23,20 @@ class Todo extends Component {
     // Binds
     this.handleAdd = this.handleAdd.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    // Initialize
+    this.refresh();
+  }
+
+  refresh() {
+    axios.get(`${URL}?sort=-createdAt`).then(resp =>
+      this.setState({
+        ...this.state,
+        description: "",
+        list: resp.data
+      })
+    );
+    console.log(this.state);
   }
 
   handleChange(e) {
@@ -29,7 +47,8 @@ class Todo extends Component {
   }
 
   handleAdd() {
-    console.log(this.state);
+    const description = this.state.description;
+    axios.post(URL, { description }).then(resp => this.refresh());
   }
 
   render() {
