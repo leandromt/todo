@@ -1,11 +1,14 @@
 import React from "react";
 
 export default props => {
-  const renderRows = () => (
-    <tr>
-      <td>OK</td>
-    </tr>
-  );
+  const renderRows = () => {
+    const list = props.list || [];
+    return list.map(item => (
+      <tr key={item._id}>
+        <td>{item.description}</td>
+      </tr>
+    ));
+  };
 
   return (
     <table className="table">
@@ -14,7 +17,7 @@ export default props => {
           <th>Descrição</th>
         </tr>
       </thead>
-      <tbody>{renderRows}</tbody>
+      <tbody>{renderRows()}</tbody>
     </table>
   );
 };

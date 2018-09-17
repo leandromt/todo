@@ -36,7 +36,6 @@ class Todo extends Component {
         list: resp.data
       })
     );
-    console.log(this.state);
   }
 
   handleChange(e) {
@@ -48,16 +47,19 @@ class Todo extends Component {
 
   handleAdd() {
     const description = this.state.description;
-    axios.post(URL, { description }).then(resp => this.refresh());
+    axios
+      .post(URL, {
+        description
+      })
+      .then(resp => this.refresh());
   }
 
   render() {
-    console.log(this.state.description);
     return (
       <div>
         <PageHeader name="Tarefas" small="Cadastro" />
         <TodoForm handleAdd={this.handleAdd} handleChange={this.handleChange} />
-        <TodoList />
+        <TodoList list={this.state.list} />
       </div>
     );
   }
