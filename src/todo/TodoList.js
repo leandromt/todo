@@ -9,6 +9,16 @@ export default props => {
         <td>{item.description}</td>
         <td>
           <IconButton
+            color="success"
+            icon="check"
+            onClick={() => props.itemMarkAsDone(item)}
+          />
+          <IconButton
+            color="warning"
+            icon="undo"
+            onClick={() => props.itemMarkAsPending(item)}
+          />
+          <IconButton
             color="danger"
             icon="trash-o"
             onClick={() => props.deleteItem(item)}

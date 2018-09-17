@@ -3,7 +3,7 @@ import Grid from "../template/Grid";
 import Button from "../template/IconButton";
 
 export default props => (
-  <div role="form">
+  <div className="pb-2" role="form">
     <div className="row">
       <Grid cols="12 9 10 10">
         <input
