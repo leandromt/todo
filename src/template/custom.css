@@ -6,3 +6,8 @@
   text-decoration: line-through;
   color: #777;
 }
+
+.custom-badge {
+  font-size: 35%;
+  vertical-align: text-top;
+}

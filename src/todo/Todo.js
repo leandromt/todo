@@ -17,7 +17,8 @@ class Todo extends Component {
     // States
     this.state = {
       description: "",
-      list: []
+      list: [],
+      quantity: 25
     };
 
     // Binds
@@ -77,7 +78,7 @@ class Todo extends Component {
     console.log("desc: " + this.state.description);
     return (
       <div>
-        <PageHeader name="Tarefas" small="Cadastro" />
+        <PageHeader name="Tarefas" small="Cadastro" quantity={this.quantity} />
         <TodoForm
           handleAdd={this.handleAdd}
           handleChange={this.handleChange !== "" ? this.handleChange : null}

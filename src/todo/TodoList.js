@@ -21,6 +21,7 @@ export default props => {
             onClick={() => props.itemMarkAsPending(item)}
           />
           <IconButton
+            hide={!item.done}
             color="danger"
             icon="trash-o"
             onClick={() => props.deleteItem(item)}
