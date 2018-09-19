@@ -1,12 +1,13 @@
 import React from "react";
 import IconButton from "../template/IconButton";
+import Todo from "./Todo";
 
 export default props => {
   const renderRows = () => {
     const list = props.list || [];
     return list.map(item => (
       <tr key={item._id}>
-        <td>{item.description}</td>
+        <td className={item.done ? "markedAsDone" : ""}>{item.description}</td>
         <td>
           <IconButton
             color="success"

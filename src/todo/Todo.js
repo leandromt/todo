@@ -32,6 +32,15 @@ class Todo extends Component {
     this.refresh();
   }
 
+  refresh() {
+    console.log("refresh");
+    axios
+      .get(`${URL}?sort=-createdAt`)
+      .then(resp =>
+        this.setState({ ...this.state, description: "", list: resp.data })
+      );
+  }
+
   handleChange(e) {
     this.setState({
       ...this.state,
@@ -53,22 +62,15 @@ class Todo extends Component {
   }
 
   itemMarkAsDone(item) {
-    console.log("Done");
-    console.log(item);
+    axios
+      .put(`${URL}/${item._id}`, { ...item, done: true })
+      .then(res => this.refresh());
   }
 
   itemMarkAsPending(item) {
-    console.log("Pending");
-    console.log(item);
-  }
-
-  refresh() {
-    console.log("refresh");
     axios
-      .get(`${URL}?sort=-createdAt`)
-      .then(resp =>
-        this.setState({ ...this.state, description: "", list: resp.data })
-      );
+      .put(`${URL}/${item._id}`, { ...item, done: false })
+      .then(res => this.refresh());
   }
 
   render() {
