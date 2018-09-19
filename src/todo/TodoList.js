@@ -1,6 +1,5 @@
 import React from "react";
 import IconButton from "../template/IconButton";
-import Todo from "./Todo";
 
 export default props => {
   const renderRows = () => {
@@ -10,11 +9,13 @@ export default props => {
         <td className={item.done ? "markedAsDone" : ""}>{item.description}</td>
         <td>
           <IconButton
+            hide={item.done}
             color="success"
             icon="check"
             onClick={() => props.itemMarkAsDone(item)}
           />
           <IconButton
+            hide={!item.done}
             color="warning"
             icon="undo"
             onClick={() => props.itemMarkAsPending(item)}
