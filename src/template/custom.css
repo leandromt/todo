@@ -7,6 +7,14 @@
   color: #777;
 }
 
+.tableActions {
+  width: 115px;
+}
+
+.todoForm {
+  padding-bottom: 60px;
+}
+
 .custom-badge {
   font-size: 35%;
   vertical-align: text-top;
